@@ -14,6 +14,15 @@ public class ChatMessage {
     private String content;
 
     public ChatMessage(String authorName, String content) {
-        this(1, LocalDateTime.now(), authorName, content);  // 다른 생성자를 호출한다. -> AllArgsConstructor
+        this(ChatMessageIdGenerator.getNextId(), LocalDateTime.now(), authorName, content);  // 다른 생성자를 호출한다. -> AllArgsConstructor
+    }
+}
+
+class ChatMessageIdGenerator {
+
+    private static long id = 0;
+
+    public static long getNextId() {
+        return ++id;
     }
 }
