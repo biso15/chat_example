@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/chat") // class에 RequestMapping annotation 추가시 class의 모든 메서드에 적용
 public class ChatController {
 
-    @GetMapping("/writeMessage")
+    ChatMessage message = new ChatMessage("김철수", "안녕");
+
+    @PostMapping("/writeMessage")
     @ResponseBody  // 화면에서 보려면 사용해야 하는 annotation
-    public String writeMessage() {
-        return "메세지가 작성됨";
+    public RsData<ChatMessage> writeMessage() {
+        return new RsData<>("S-1", "메세지가 작성됨", message);
     }
 
 }
